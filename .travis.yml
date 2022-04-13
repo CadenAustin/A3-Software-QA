@@ -8,13 +8,16 @@ script:
 - npm run lint
 - npm test
 - npm run build
-before_install:
-- openssl aes-256-cbc -K $encrypted_08fbb9a77cf7_key -iv $encrypted_08fbb9a77cf7_iv
-  -in a3-key.json.enc -out a3-key.json -d
-
+after_script:
+- COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
 deploy:
-  provider: gae
-  keyfile: a3-key.json
-  project: a3-software-qa
+  provider: pages
+  skip_cleanup: true
+  github_token: $github_token
+  local_dir: build
   on:
-    branch: main
+    branch: master
+env:
+  global:
+  - secure: d3nabBbJxotDSXmK60bQMFVhWN8QgTHemnguieCJvTvnp2UYpIFQltCfkUwVhAFTmQkw7pJ80Np/Y4pqGQKajrEB2mp8NTpB8+4hJN37zaxuES9wFxv7J6aJPGIieUp8SxjRlpUW04otKysJcRC8NlM7Jlm0LXER0J3Ipuw6Gn+jHt7wet+qn3+E5ACh7rTe07aqQjWZXUkhirsDVoAKrHb4bRQCVVXxKGxA6+KtSleIIw7wJhE7rmOKmuwLEmMHblrMDYK8G8GMrycg3t1dOjKXYoNstWbZpLobLrj4Rtg2Juda8MuX2mwm+yjLNLP/zGpV4seMgLjgKp4347A9tqRz9uUanj1eqQzwpEEka+edSUoYq17IK25nlOgA58B76u1bPqvIHUZv780iXjYF83NpFpAjIGhw7icECEUwreCAfClA0pgzKHpn+DEZRyryzj0H9VmII16P7fon7XVyoQII7Q6d1NE9wiR1CqfCqfrCZMTKNzyOKSBkDl5kH4qur3dUv9kxa5tY1u8M5UCqERihPWRj0WFn4zTzVNPJ9SNPVNq+7QtEIH7mTWuTvufAqfGhSYJk/NTOPeLg7lbJGiJS5JlcmVq7G+b48bl4bvGDjsd6sd9Anmb4QPAgzDCXpngcRoVg6KZAEWrIXOnv2Gza2SmfmfU21sCJXMCVuwY=
+  - secure: nswBtctBjh12f7Bn9KIylzwh1rf/76bD5+QP6yDfz6j2OceVveVv0VRq629ZYh+H4de+jUl5xOze88ox0e7MGR6rdZI3fwf83jMpfdo/RB0TGyflZupWagfy9xfynSNf69eowj4jqsxKDhUk4/ViXisqbiuZv025IKQ4TrKTjtNFsg5vzYI80InSPiaa2RQKsnnELweMc4WLdAigTumG8Gk5n+xc7oKK+J6X++wJDrco6QDDGoqtXb8X0zK8amzcTHNrtoUVlSF1dlI72nyvO6LjdN+w8aFodsawX4LruupKkzELsJ+tfIdnj0x6MTniUc2IA7/Kwu/yXxjWAkuUNwbSTJclVofumXrjtKjyLaH4JVUfedFLcdCcW8tZf1RBzVI77byNF19HOcvZvsJUZ64p+kOof2tIdQFWEMODXMTUH+hoBRE47cRFrMUEJkw0eWS2bfwFRKNaP0/dNU5uUxRwDJQhAcURNZJFuH3Gq6iPyo1aFQ/1hG3T3VQy5huqHa/aM48N2heq+n+BZQdWorJwY5kCa/TbytpeqtcvaWnz7u7LocTPcNd4xjlMrJXXTbgnvri+Bv0kLGt0oZtfruwysQpwYJAIBmwaUG1/mkYnq+vgz712EaSv3DPPqXw84SkXleCsYOhGbm2YRqVVlQxTN50pVTMUzyUzW52Tdhg=
