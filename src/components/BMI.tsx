@@ -53,6 +53,7 @@ function BMI(): ReactElement {
             type="number"
             onChange={handleChange}
             name="hFeet"
+            data-testid="h-feet-input"
           />
         </div>
         <div className="bmi-form-input">
@@ -64,6 +65,7 @@ function BMI(): ReactElement {
             type="number"
             onChange={handleChange}
             name="hInch"
+            data-testid="h-inch-input"
           />
         </div>
         <div className="bmi-form-input">
@@ -75,6 +77,7 @@ function BMI(): ReactElement {
             type="number"
             onChange={handleChange}
             name="weight"
+            data-testid="weight-input"
           />
         </div>
         {error
@@ -83,12 +86,12 @@ function BMI(): ReactElement {
       {output
                 && (
                 <div className="bmi-output">
-                  <h4>
+                  <h4 data-testid="bmi-bmi-output">
                     BMI:
                     {' '}
                     {output.bmi}
                   </h4>
-                  <h4>
+                  <h4 data-testid="bmi-category-output">
                     BMI Category:
                     {' '}
                     {output.category}
