@@ -21,7 +21,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.ts src/**/*.tsx"
+    "lint": "eslint src/**/*.ts src/**/*.tsx",
+    "gcp-build": "react-scripts build",
+    "deploy": "gcloud app deploy"
   },
   "eslintConfig": {
     "extends": [
