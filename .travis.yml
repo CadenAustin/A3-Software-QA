@@ -10,7 +10,7 @@ script:
 - npm run build
 before_install:
 - openssl aes-256-cbc -K $encrypted_f81a49c4147e_key -iv $encrypted_f81a49c4147e_iv
-  -in a3-software-qa-427550ad5968.json.enc -out ~\/Downloads/a3-software-qa-427550ad5968.json
+  -in a3-software-qa-427550ad5968.json.enc -out a3-software-qa-427550ad5968.json
   -d
 
 deploy:
